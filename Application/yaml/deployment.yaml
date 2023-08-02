@@ -16,9 +16,9 @@ spec:
         app: user2-hello-world
     spec:
       containers:
-        name: hello-world
-        image: 'quay.io/eliav_nili/app-dev-lab:v2'
         - resources: {}
+          name: hello-world
+          image: 'quay.io/eliav_nili/app-dev-lab:v2'
           terminationMessagePath: /dev/termination-log
           name: hello-world
           ports:
