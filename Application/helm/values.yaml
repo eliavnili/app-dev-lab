@@ -2,7 +2,7 @@ ReplicaNumber: 3
 
 containers:
   containerPort: 8080
-  image: 'quay.io/eliav_nili/app-dev-labv:v2'
+  image: 'quay.io/eliav_nili/app-dev-lab:v2'
   tag: 'base'
 
 service:
