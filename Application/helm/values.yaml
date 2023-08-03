@@ -8,14 +8,4 @@ containers:
 service:
   servicePort: 8080
 readinessProbe:
-      failureThreshold: 2
       initialDelaySeconds: 30
-      periodSeconds: 30
-      successThreshold: 1
-      timeoutSeconds: 30
- livenessProbe:
-      failureThreshold: 4
-      initialDelaySeconds: 30
-      periodSeconds: 30
-      successThreshold: 1
-      timeoutSeconds: 30
