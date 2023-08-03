@@ -9,3 +9,4 @@ service:
   servicePort: 8080
 readinessProbe:
       initialDelaySeconds: 30
+      path: '/health/readiness'
