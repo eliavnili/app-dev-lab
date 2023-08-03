@@ -15,15 +15,12 @@ spec:
 # set your lab user name
         app: {{ .Release.Name }}
     spec:
-    volumes:
+      volumes:
         - name: index-html
           configMap:
             name: index.html
             defaultMode: 420
       containers:
-        volumeMounts:
-          - name: index-html
-            mountPath: /tmp/html
         - resources: {}
           name: {{ .Release.Name }}
           image: {{ .Values.containers.image }}:{{ .Values.containers.tag }}
@@ -33,6 +30,9 @@ spec:
             - containerPort: {{ .Values.containers.containerPort }}
               protocol: TCP
           imagePullPolicy: IfNotPresent
+          volumeMounts:
+          - name: index-html
+            mountPath: /tmp/html
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
   strategy:
