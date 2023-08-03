@@ -33,7 +33,6 @@ spec:
           volumeMounts:
             - name: index-html
               mountPath: /tmp/html
-     
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
   strategy:
