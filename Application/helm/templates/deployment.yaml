@@ -3,6 +3,7 @@ apiVersion: apps/v1
 metadata:
 # set your lab user name
   name: {{ .Release.Name }}
+  annotations:
 spec:
   replicas: {{ .Values.ReplicaNumber }}
   selector:
