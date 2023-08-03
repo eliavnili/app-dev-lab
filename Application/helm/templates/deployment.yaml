@@ -30,9 +30,9 @@ spec:
             - containerPort: {{ .Values.containers.containerPort }}
               protocol: TCP
           imagePullPolicy: IfNotPresent
-        volumeMounts:
-          - name: index-html
-            mountPath: /tmp/html
+          volumeMounts:
+            - name: index-html
+              mountPath: /tmp/html
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
   strategy:
