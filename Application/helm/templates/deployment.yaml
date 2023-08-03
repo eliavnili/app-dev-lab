@@ -21,19 +21,7 @@ spec:
             name: index.html
             defaultMode: 420
       containers:
-        - resources: {}
-          name: {{ .Release.Name }}
-          image: {{ .Values.containers.image }}:{{ .Values.containers.tag }}
-          terminationMessagePath: /dev/termination-log
-          name: {{ .Release.Name }}
-          ports:
-            - containerPort: {{ .Values.containers.containerPort }}
-              protocol: TCP
-          imagePullPolicy: IfNotPresent
-          volumeMounts:
-            - name: index-html
-              mountPath: /tmp/html
-          readinessProbe:
+        readinessProbe:
             httpGet:
               path: /health/readiness # this check the application url path
               port: {{ .Values.containers.containerPort  }} # In which port the Application is listening
@@ -55,7 +43,20 @@ spec:
             failureThreshold: 3
           env:
             - name: PORT
-              value: {{ .Values.containers.containerPort | quote }} 
+              value: {{ .Values.containers.containerPort | quote }}
+        - resources: {}
+          name: {{ .Release.Name }}
+          image: {{ .Values.containers.image }}:{{ .Values.containers.tag }}
+          terminationMessagePath: /dev/termination-log
+          name: {{ .Release.Name }}
+          ports:
+            - containerPort: {{ .Values.containers.containerPort }}
+              protocol: TCP
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: index-html
+              mountPath: /tmp/html
+           
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
   strategy:
